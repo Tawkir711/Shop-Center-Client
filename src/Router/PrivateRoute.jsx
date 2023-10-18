@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }) => {
   console.log(location.pathname);
 
   if (loading) {
-    return <span className="loading loading-dots loading-lg"></span>;
+    return <img className="mx-auto" src="https://i.postimg.cc/TwvH6twB/365923266-310060981587089-6038640626746651061-n.gif" alt="loading gif" />;
   }
 
   if (user) {

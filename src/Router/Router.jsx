@@ -1,13 +1,13 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../Layout/MainLayout';
-import Banner from '../Components/Home/Banner';
 import ErrorPage from '../Components/Error/ErrorPage';
 import Register from '../Components/Register/Register';
 import Login from '../Components/Login/Login';
 import PrivateRoute from './PrivateRoute';
 import AddProduct from '../Components/AddProduct/AddProduct';
 import MyCart from '../Components/MyCart/MyCart';
+import Home from '../Components/Home/Home';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element:<Banner></Banner>
+        element: <Home></Home>,
+        loader: () => fetch('product.json')
       },
       {
         path: '/addProduct',
