@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.postimg.cc/mrkckhW3/bryan-angelo-Fti-XADBTq-GY-unsplash.jpg",
+    "brandName": "Amazon"
+  },
+  {
+    "id": 2,
+    "image": "https://i.postimg.cc/c4D0Hhxj/marques-thomas-NCjnl-Wnv-YA4-unsplash.jpg",
+    "brandName": "Walmart"
+  },
+  {
+    "id": 3,
+    "image": "https://i.postimg.cc/zXwht0ZV/alibaba.jpg",
+    "brandName": "Alibaba"
+  },
+  {
+    "id": 4,
+    "image": "https://i.postimg.cc/t4w9hGSP/eBay.jpg",
+    "brandName": "eBay"
+  },
+  {
+    "id": 5,
+    "image": "https://i.postimg.cc/x8BSLKgQ/Target.jpg",
+    "brandName": "Target"
+  },
+  {
+    "id": 6,
+    "image": "https://i.postimg.cc/sDBWyshG/best-buy.jpg",
+    "brandName": "Best Buy"
+  }
+]

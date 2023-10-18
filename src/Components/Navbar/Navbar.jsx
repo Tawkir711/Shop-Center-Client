@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Context/Context";
 
 const Navbar = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    logOut()
+      .then()
+      .catch()
+  };
+  const userImage =
+    user && user.photoURL
+      ? user.photoURL
+      : "https://i.postimg.cc/zB10zYpJ/userImg.jpg";
+  const userName = user && user.displayName; 
 
   const links = (
     <>
@@ -15,6 +28,30 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+      {
+        user && <li>
+        <NavLink 
+          to={"/addProduct"}
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "underline text-red-600" : ""
+          }
+        >
+          Add Product 
+        </NavLink>
+      </li>
+      }
+      {
+        user && <li>
+        <NavLink
+          to={"/myCart"}
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "underline text-red-600" : ""
+          }
+        >
+          My Cart
+        </NavLink>
+      </li>
+      }
       <li>
         <NavLink
           to={"/login"}
@@ -70,9 +107,21 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to={"/login"}>
-          <button className="btn">Login</button>
-        </Link>
+        <p>{userName}</p>
+        <label className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            <img src={userImage} alt="" />
+          </div>
+        </label>
+        {user ? (
+          <button onClick={handleSignOut} className="btn">
+            Sign Out
+          </button>
+        ) : (
+          <Link to={"/login"}>
+            <button className="btn">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );
