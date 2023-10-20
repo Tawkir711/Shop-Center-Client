@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { CarouselDefault } from '../Silder/Silder';
 
 const ProductDetails = ({ product }) => {
   const {id, brandName , image} = product;
@@ -19,6 +18,7 @@ const ProductDetails = ({ product }) => {
         </div>
       </div>
     </NavLink>
+    
   );
 };
 
