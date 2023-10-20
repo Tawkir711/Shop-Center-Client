@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import AddProduct from '../Components/AddProduct/AddProduct';
 import MyCart from '../Components/MyCart/MyCart';
 import Home from '../Components/Home/Home';
+import BrandDetail from '../Components/BrandDetail/BrandDetail';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('product.json')
+        loader: () => fetch('/product.json')
       },
       {
         path: '/addProduct',
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element:<Login></Login>
+      },
+      {
+        path: '/brandDetail/:brandName',
+        element:<PrivateRoute><BrandDetail></BrandDetail></PrivateRoute>,
       }
     ]
   }
