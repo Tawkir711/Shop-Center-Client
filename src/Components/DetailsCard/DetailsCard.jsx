@@ -19,7 +19,9 @@ const DetailsCard = ({ data }) => {
           <p>{rating}</p>
           <p>{type}</p>
           <div className="flex justify-between">
-            <button className="btn btn-primary">Update Button</button>
+            <Link to={`/updateData/${_id}`}>
+              <button className="btn btn-primary">Update Button</button>
+            </Link>
             <Link to={`/cardInfo/${_id}`}>
               <button className="btn btn-primary">Details Button</button>
             </Link>

@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({ darkMood }) => {
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content mt-10">
+    <footer className={`footer p-10 ${darkMood? "bg-gray-900 text-white":"bg-white"} text-base-content mt-10`}>
       <aside>
-        <img className='h-[70px] rounded-xl'
+        <img
+          className="h-[70px] rounded-xl"
           src="https://i.postimg.cc/kG4Ln1CF/online-shop-ecommerce-logo.jpg"
           alt="logo"
         />

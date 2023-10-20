@@ -2,19 +2,17 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/Context";
 
-const Navbar = () => {
+const Navbar = ({ darkMood, handleDark }) => {
 
   const { user, logOut } = useContext(AuthContext);
   const handleSignOut = () => {
-    logOut()
-      .then()
-      .catch()
+    logOut().then().catch();
   };
   const userImage =
     user && user.photoURL
       ? user.photoURL
       : "https://i.postimg.cc/zB10zYpJ/userImg.jpg";
-  const userName = user && user.displayName; 
+  const userName = user && user.displayName;
 
   const links = (
     <>
@@ -28,30 +26,30 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      {
-        user && <li>
-        <NavLink 
-          to={"/addProduct"}
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "underline text-red-600" : ""
-          }
-        >
-          Add Product 
-        </NavLink>
-      </li>
-      }
-      {
-        user && <li>
-        <NavLink
-          to={"/myCart"}
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "underline text-red-600" : ""
-          }
-        >
-          My Cart
-        </NavLink>
-      </li>
-      }
+      {user && (
+        <li>
+          <NavLink
+            to={"/addProduct"}
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "underline text-red-600" : ""
+            }
+          >
+            Add Product
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink
+            to={"/myCart"}
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "underline text-red-600" : ""
+            }
+          >
+            My Cart
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink
           to={"/login"}
@@ -75,7 +73,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 sticky top-0 z-10">
+    <div className={`navbar ${darkMood? "bg-gray-900 text-white":"bg-white"} sticky top-0 z-10`}>
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -108,6 +106,9 @@ const Navbar = () => {
             src="https://i.postimg.cc/kG4Ln1CF/online-shop-ecommerce-logo.jpg"
             alt="logo"
           />
+          <div>
+            <button onClick={handleDark}>{ `${darkMood? "dark":"light"}`}</button>
+          </div>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

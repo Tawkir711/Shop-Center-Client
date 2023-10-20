@@ -10,46 +10,65 @@ import MyCart from '../Components/MyCart/MyCart';
 import Home from '../Components/Home/Home';
 import BrandDetail from '../Components/BrandDetail/BrandDetail';
 import CardDetails from '../Components/Details/CardDetails';
+import UpdateData from '../Components/UpdateData/UpdateData';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home></Home>,
-        loader: () => fetch('/product.json')
+        loader: () => fetch("/product.json"),
       },
       {
-        path: '/addProduct',
-        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+        path: "/addProduct",
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/myCart',
-        element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/myCart')
+        path: "/myCart",
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/myCart"),
       },
       {
-        path: '/register',
-        element:<Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path: '/login',
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path: '/brandDetail/:brandName',
-        element:<PrivateRoute><BrandDetail></BrandDetail></PrivateRoute>,
+        path: "/brandDetail/:brandName",
+        element: (
+          <PrivateRoute>
+            <BrandDetail></BrandDetail>
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/cardInfo/:id',
+        path: "/cardInfo/:id",
         element: <CardDetails></CardDetails>,
-        loader: ({params})=> fetch(`http://localhost:5000/cardInfo/${params.id}`)
-      }
-    ]
-  }
-])
-
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cardInfo/${params.id}`),
+      },
+      {
+        path: "/updateData/:id",
+        element: <UpdateData></UpdateData>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cardInfo/${params.id}`),
+      },
+    ],
+  },
+]);
 export default router;

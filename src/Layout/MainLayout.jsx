@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/Footer';
 
 const MainLayout = () => {
+  const [darkMood, setDarkMode] = useState(false);
+  console.log(darkMood);
+  const handleDark = () => {
+    setDarkMode(!darkMood);
+  };
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar handleDark={handleDark} darkMood={darkMood}></Navbar>
       <Outlet></Outlet>
-      <Footer></Footer>
+      <Footer darkMood={darkMood}></Footer>
     </div>
   );
 };
