@@ -16,8 +16,8 @@ const BrandDetail = () => {
       });
   }, []);
   console.log(data);
-  const remaining = data.filter(
-    (singleData) => singleData.brandName == brandName );
+  const remaining = data?.filter(
+    (singleData) => singleData?.brandName == brandName );
   console.log(remaining);
 
   return (

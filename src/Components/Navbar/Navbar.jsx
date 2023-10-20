@@ -101,7 +101,14 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <div className="flex justify-center items-center gap-3">
+          <h2 className="text-xl font-semibold">Shop Center</h2>
+          <img
+            className="h-[70px] rounded-xl"
+            src="https://i.postimg.cc/kG4Ln1CF/online-shop-ecommerce-logo.jpg"
+            alt="logo"
+          />
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

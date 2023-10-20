@@ -6,7 +6,19 @@ const CardDetails = () => {
   const details = useLoaderData();
   console.log(details);
     const { _id, brandName, name, description, photo, price, rating, type } =details ;
-
+  const handleAddCart = () => {
+    fetch('http://localhost:5000/myCart', {
+      method: "POST",
+      headers: {
+        "content-type":"application/json"
+      },
+      body: JSON.stringify(details)
+    })
+      .then(res => res.json())
+      .then(data => {
+      console.log(data);
+    })
+  }
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl mx-auto my-10">
@@ -22,7 +34,7 @@ const CardDetails = () => {
         <h2 className="card-title">Rating: {rating} </h2>
 
         <div className="card-actions">
-          <button className="btn btn-primary">Add to cart</button>
+          <button onClick={handleAddCart} className="btn btn-primary">Add to cart</button>
         </div>
       </div>
     </div>
