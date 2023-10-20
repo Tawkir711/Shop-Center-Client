@@ -9,6 +9,7 @@ import AddProduct from '../Components/AddProduct/AddProduct';
 import MyCart from '../Components/MyCart/MyCart';
 import Home from '../Components/Home/Home';
 import BrandDetail from '../Components/BrandDetail/BrandDetail';
+import CardDetails from '../Components/Details/CardDetails';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
       {
         path: '/brandDetail/:brandName',
         element:<PrivateRoute><BrandDetail></BrandDetail></PrivateRoute>,
+      },
+      {
+        path: '/cardInfo/:id',
+        element: <CardDetails></CardDetails>,
+        loader: ({params})=> fetch(`http://localhost:5000/cardInfo/${params.id}`)
       }
     ]
   }
