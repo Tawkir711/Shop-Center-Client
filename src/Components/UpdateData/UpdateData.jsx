@@ -39,7 +39,7 @@ const UpdateData = () => {
   };
   return (
     <div className="bg-[#d8a305] p-4 lg:p-10 my-7">
-      <h2 className="text-3xl font-bold">Add Product</h2>
+      <h2 className="text-3xl font-bold">Update Product</h2>
       <form onSubmit={handleUpdate}>
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
@@ -61,7 +61,7 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text"
+                type="text" defaultValue={brandName}
                 name="brandName"
                 placeholder="Brand Name"
                 className="input input-bordered w-full"
@@ -76,7 +76,7 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text"
+                type="text" defaultValue={type}
                 name="type"
                 placeholder="Type"
                 className="input input-bordered w-full"
@@ -89,7 +89,7 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text"
+                type="text" defaultValue={photo}
                 name="photo"
                 placeholder="Photo URL"
                 className="input input-bordered w-full"
@@ -104,7 +104,7 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text"
+                type="text" defaultValue={price}
                 name="price"
                 placeholder="Price"
                 className="input input-bordered w-full"
@@ -117,7 +117,7 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text"
+                type="text" defaultValue={rating}
                 name="rating"
                 placeholder="Rating"
                 className="input input-bordered w-full"
@@ -125,22 +125,7 @@ const UpdateData = () => {
             </label>
           </div>
         </div>
-        {/* <div className="mb-8">
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text">Photo URL</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="photo"
-                placeholder="Photo URL"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-        </div> */}
-        <input type="submit" value="Add Product" className="btn btn-block" />
+        <input type="submit" value="Update Product" className="btn btn-block" />
       </form>
     </div>
   );
