@@ -38,7 +38,7 @@ const CardDetails = () => {
   };
 
   return (
-    <div className="card w-96 bg-base-100 shadow-xl mx-auto my-10">
+    <div className="card  bg-base-100 shadow-xl mx-auto my-10">
       <Helmet>
         <title>Shop Center | Cart Details</title>
       </Helmet>

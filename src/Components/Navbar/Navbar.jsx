@@ -100,12 +100,29 @@ const Navbar = ({ darkMood, handleDark }) => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {links}
+            <div className="navbar-end md:hidden md:flex">
+              <p>{userName}</p>
+              <label className="btn btn-ghost btn-circle avatar  ">
+                <div className="w-10 rounded-full">
+                  <img src={userImage} alt="user img" />
+                </div>
+              </label>
+              {user ? (
+                <button onClick={handleSignOut} className="btn">
+                  Sign Out
+                </button>
+              ) : (
+                <Link to={"/login"}>
+                  <button className="btn">Login</button>
+                </Link>
+              )}
+            </div>
           </ul>
         </div>
         <div className="flex justify-center items-center gap-3">
           <h2 className="text-xl font-semibold">Shop Center</h2>
           <img
-            className="h-[70px] rounded-xl"
+            className="h-[50px] rounded-full hidden md:flex "
             src="https://i.postimg.cc/kG4Ln1CF/online-shop-ecommerce-logo.jpg"
             alt="logo"
           />
@@ -119,11 +136,11 @@ const Navbar = ({ darkMood, handleDark }) => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end hidden md:flex">
         <p>{userName}</p>
-        <label className="btn btn-ghost btn-circle avatar">
+        <label className="btn btn-ghost btn-circle avatar  ">
           <div className="w-10 rounded-full">
-            <img src={userImage} alt="" />
+            <img src={userImage} alt="user img" />
           </div>
         </label>
         {user ? (

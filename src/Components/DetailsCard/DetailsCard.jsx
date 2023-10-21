@@ -20,10 +20,10 @@ const DetailsCard = ({ data }) => {
           <p className='text-lg'>Type: {type}</p>
           <div className="flex justify-between">
             <Link to={`/updateData/${_id}`}>
-              <button className="btn-grad">Update</button>
+              <button className="btn btn-primary">Update</button>
             </Link>
             <Link to={`/cardInfo/${_id}`}>
-              <button className="btn-grad2">Details</button>
+              <button className="btn btn-primary">Details</button>
             </Link>
           </div>
         </div>

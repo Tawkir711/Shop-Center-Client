@@ -5,7 +5,7 @@ const Footer = ({ darkMood }) => {
     <footer className={`footer p-10 ${darkMood? "bg-gray-900 text-white":"bg-white"} text-base-content mt-10`}>
       <aside>
         <img
-          className="h-[70px] rounded-xl"
+          className="h-[70px] rounded-full"
           src="https://i.postimg.cc/kG4Ln1CF/online-shop-ecommerce-logo.jpg"
           alt="logo"
         />

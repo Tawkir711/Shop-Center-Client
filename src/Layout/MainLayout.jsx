@@ -10,7 +10,7 @@ const MainLayout = () => {
     setDarkMode(!darkMood);
   };
   return (
-    <div>
+    <div className='max-w-7xl mx-auto'>
       <Navbar handleDark={handleDark} darkMood={darkMood}></Navbar>
       <div className={`${darkMood ? "bg-gray-900 text-red-500" : "bg-base-100"}`}>
         <Outlet></Outlet>
