@@ -6,7 +6,7 @@ const FAQ = () => {
       <div className="flex justify-center items-center rounded-xl md:w-[100%] lg:w-[50%] px-4">
         <img src="https://i.postimg.cc/1zvwcBn2/faq-vector.png" alt="FAQ img" />
       </div>
-      <div className=" md:w-[100%] lg:w-[50%]">
+      <div className=" md:w-[100%] lg:w-[45%]">
         <h1 className="text-3xl font-semibold text-center py-4">
           Frequently asked Questions?
         </h1>
