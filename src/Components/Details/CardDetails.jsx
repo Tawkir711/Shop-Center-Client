@@ -1,27 +1,47 @@
-import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CardDetails = () => {
-  
   const details = useLoaderData();
   console.log(details);
-    const { _id, brandName, name, description, photo, price, rating, type } =details ;
+  const { _id, brandName, name, description, photo, price, rating, type } =
+    details;
   const handleAddCart = () => {
-    fetch('http://localhost:5000/myCart', {
+    fetch("https://assignment-server-gamma.vercel.app/myCart", {
       method: "POST",
       headers: {
-        "content-type":"application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(details)
+      body: JSON.stringify(details),
     })
-      .then(res => res.json())
-      .then(data => {
-      console.log(data);
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Done",
+            color: "red",
+            background: "gray",
+            text: "Add to Cart",
+          });
+        }
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops...",
+          text: "Already Added",
+        });
+      });
+  };
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl mx-auto my-10">
+      <Helmet>
+        <title>Shop Center | Cart Details</title>
+      </Helmet>
       <figure className="px-10 pt-10">
         <img src={photo} alt="img" className="rounded-xl w-full" />
       </figure>
@@ -34,7 +54,9 @@ const CardDetails = () => {
         <h2 className="card-title">Rating: {rating} </h2>
 
         <div className="card-actions">
-          <button onClick={handleAddCart} className="btn btn-primary">Add to cart</button>
+          <button onClick={handleAddCart} className="btn-grad">
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

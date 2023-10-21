@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/Context';
 import Swal from 'sweetalert2';
 import { FaGoogle } from "react-icons/fa";
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
   const { createUser, signInGoogle } = useContext(AuthContext);
@@ -73,6 +74,9 @@ const Register = () => {
 
   return (
     <div className="hero min-h-screen bg-base-200">
+      <Helmet>
+        <title>Shop Center | Register</title>
+      </Helmet>
       <div className="hero-content flex-col ">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register your account !</h1>

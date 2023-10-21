@@ -1,5 +1,7 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateData = () => {
   const dataUpdate = useLoaderData();
@@ -25,7 +27,7 @@ const UpdateData = () => {
       photo,
     };
 
-    fetch(`http://localhost:5000/myCart/${_id}`, {
+    fetch(`https://assignment-server-gamma.vercel.app/myCart/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -34,11 +36,20 @@ const UpdateData = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(product);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "Done",
+            text: "Your data Updated",
+          });
+        }
       });
   };
   return (
     <div className="bg-[#d8a305] p-4 lg:p-10 my-7">
+      <Helmet>
+        <title>Shop Center | Update Data</title>
+      </Helmet>
       <h2 className="text-3xl font-bold">Update Product</h2>
       <form onSubmit={handleUpdate}>
         <div className="md:flex mb-8">
@@ -48,7 +59,8 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text" defaultValue={name}
+                type="text"
+                defaultValue={name}
                 name="name"
                 placeholder="Name"
                 className="input input-bordered w-full"
@@ -61,7 +73,8 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text" defaultValue={brandName}
+                type="text"
+                defaultValue={brandName}
                 name="brandName"
                 placeholder="Brand Name"
                 className="input input-bordered w-full"
@@ -76,7 +89,8 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text" defaultValue={type}
+                type="text"
+                defaultValue={type}
                 name="type"
                 placeholder="Type"
                 className="input input-bordered w-full"
@@ -89,7 +103,8 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text" defaultValue={photo}
+                type="text"
+                defaultValue={photo}
                 name="photo"
                 placeholder="Photo URL"
                 className="input input-bordered w-full"
@@ -104,7 +119,8 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text" defaultValue={price}
+                type="text"
+                defaultValue={price}
                 name="price"
                 placeholder="Price"
                 className="input input-bordered w-full"
@@ -117,7 +133,8 @@ const UpdateData = () => {
             </label>
             <label className="input-group">
               <input
-                type="text" defaultValue={rating}
+                type="text"
+                defaultValue={rating}
                 name="rating"
                 placeholder="Rating"
                 className="input input-bordered w-full"

@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { Button } from '@material-tailwind/react';
-import { useLoaderData } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import React, { useState } from "react";
+import { Button } from "@material-tailwind/react";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyCart = () => {
   const cartItem = useLoaderData();
   console.log("9", cartItem);
-  const [ myData, setMyData ] = useState(cartItem);
-  console.log("11",myData);
+  const [myData, setMyData] = useState(cartItem);
+  console.log("11", myData);
 
   const handleRemove = (id) => {
     console.log("14", id);
@@ -21,27 +22,30 @@ const MyCart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/myCart/${id}`, {
+        fetch(`https://assignment-server-gamma.vercel.app/myCart/${id}`, {
           method: "DELETE",
         })
-        .then((res) => res.json())
-        .then((data) => {
-          const remaining = myData?.filter((data) => data._id !== id);
-          setMyData(remaining);
-          console.log("21", data);
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        });
+          .then((res) => res.json())
+          .then((data) => {
+            const remaining = myData?.filter((data) => data._id !== id);
+            setMyData(remaining);
+            console.log("21", data);
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          });
       }
     });
   };
   return (
     <div className="px-3 max-w-screen-xl mx-auto flex my-16 min-h-[50vh] justify-between flex-wrap items-start">
+      <Helmet>
+        <title>Shop Center | My Cart</title>
+      </Helmet>
       <div className="relative overflow-x-auto  shadow-md sm:rounded-lg  ">
         <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
             <tr>
               <th scope="col" className="px-1 md:px-6 py-3">
-                 Product Name
+                Product Name
               </th>
               <th scope="col" className="px-1 md:px-6 py-3">
                 Brand
@@ -74,10 +78,12 @@ const MyCart = () => {
                   <td className="px-1 md:px-6 py-4">{cart.brandName}</td>
 
                   <td className="px-1 md:px-6 py-4">${cart.price}</td>
-                  <td className="px-1 md:px-6 py-4 " ><img className='h-[100px]' src={cart.photo} alt="" /></td>
+                  <td className="px-1 md:px-6 py-4 ">
+                    <img className="h-[100px]" src={cart.photo} alt="" />
+                  </td>
                   <td className="px-1 md:px-6 py-4 text-right">
                     <Button
-                      onClick={()=> handleRemove(cart._id)}
+                      onClick={() => handleRemove(cart._id)}
                       className="font-medium bg-transparent shadow-none p-2 text-blue-600  hover:shadow-none   dark:text-blue-500 hover:underline"
                     >
                       Remove

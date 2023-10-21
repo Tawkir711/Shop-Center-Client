@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/Context";
 
 const Navbar = ({ darkMood, handleDark }) => {
-
   const { user, logOut } = useContext(AuthContext);
   const handleSignOut = () => {
     logOut().then().catch();
@@ -73,7 +72,11 @@ const Navbar = ({ darkMood, handleDark }) => {
     </>
   );
   return (
-    <div className={`navbar ${darkMood? "bg-gray-900 text-white":"bg-white"} sticky top-0 z-10`}>
+    <div
+      className={`navbar ${
+        darkMood ? "bg-gray-900 text-white" : "bg-white"
+      } sticky top-0 z-10`}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -107,7 +110,9 @@ const Navbar = ({ darkMood, handleDark }) => {
             alt="logo"
           />
           <div>
-            <button onClick={handleDark}>{ `${darkMood? "dark":"light"}`}</button>
+            <button className="btn" onClick={handleDark}>{`${
+              darkMood ? "dark" : "light"
+            }`}</button>
           </div>
         </div>
       </div>

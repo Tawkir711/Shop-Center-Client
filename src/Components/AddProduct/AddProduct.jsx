@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
+import { Helmet } from "react-helmet";
 
 const AddProduct = () => {
-  const handleAddProduct = event => {
+  const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -11,23 +12,34 @@ const AddProduct = () => {
     const price = form.price.value;
     const rating = form.rating.value;
     const photo = form.photo.value;
-    const brandPost = { name, brandName, type, description, price, rating, photo };
+    const brandPost = {
+      name,
+      brandName,
+      type,
+      description,
+      price,
+      rating,
+      photo,
+    };
     console.log(brandPost);
 
-    fetch("http://localhost:5000/brands", {
+    fetch("https://assignment-server-gamma.vercel.app/brands", {
       method: "POST",
       headers: {
-        "content-type":"application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(brandPost)
+      body: JSON.stringify(brandPost),
     })
-      .then(res => res.json())
-      .then(data => {
-      console.log(data);
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <div className="bg-[#d8a305] p-4 lg:p-10 my-7">
+      <Helmet>
+        <title>Shop Center | Add Product</title>
+      </Helmet>
       <h2 className="text-3xl font-bold">Add Product</h2>
       <form onSubmit={handleAddProduct}>
         <div className="md:flex mb-8">
